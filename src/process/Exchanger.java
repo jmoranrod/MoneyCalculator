@@ -1,5 +1,5 @@
 package process;
 
-public class Exanger {
+public class Exchanger {
     
 }
