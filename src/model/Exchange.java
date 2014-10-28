@@ -1,20 +1,20 @@
 package model;
 
 public class Exchange {
-    private final Currency amount;
-    private final Money money[];
+    private final Money amount;
+    private final Currency currency;
 
-    public Exchange(Currency amount, Money[] money) {
+    public Exchange(Money amount, Currency currency) {
         this.amount = amount;
-        this.money = money;
+        this.currency = currency;
     }
 
-    public Currency getAmount() {
+    public Money getAmount() {
         return amount;
     }
 
-    public Money[] getMoney() {
-        return money;
+    public Currency getCurrency() {
+        return currency;
     }
     
     
