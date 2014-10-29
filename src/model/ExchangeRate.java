@@ -16,9 +16,18 @@ public class ExchangeRate {
         this.date = date;
     }
 
+    public Currency getIn() {
+        return in;
+    }
+
+    public Currency getOut() {
+        return out;
+    }
+
     public double getRate() {
         return rate;
     }
+
 
     public void setRate(double rate) {
         this.rate = rate;
