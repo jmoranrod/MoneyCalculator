@@ -12,11 +12,12 @@ public class CurrencySet implements Iterable<Currency> {
     }
     
     public Currency get(String name){
-        return null;
+        return map.get(name);
     }
     
     public void add(Currency currency){
-        
+        if (!map.containsKey(currency.getCode()))
+            map.put(currency.getCode(), currency);     
     }
     
     @Override
@@ -25,7 +26,7 @@ public class CurrencySet implements Iterable<Currency> {
 
             @Override
             public boolean hasNext() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                return true;
             }
 
             @Override
