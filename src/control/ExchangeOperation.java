@@ -34,7 +34,7 @@ public class ExchangeOperation {
     }
 
     private void show(Money money) {
-        new MoneyDisplay(money);//duda
+        new MoneyDisplay(money).execute();//duda
     }
 
     private ExchangeRate readExchangeRate() {

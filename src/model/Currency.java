@@ -5,6 +5,7 @@ public class Currency {
     private final String name;
     private final String symbol;
 
+
     public Currency(String code, String name, String symbol) {
         this.code = code;
         this.name = name;
@@ -21,6 +22,11 @@ public class Currency {
 
     public String getSymbol() {
         return symbol;
+    }
+    
+    @Override
+    public String toString() {
+        return "Currency{" + "code=" + code + ", name=" + name + ", symbol=" + symbol + '}';
     }
     
 }
