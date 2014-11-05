@@ -2,19 +2,19 @@ package ui;
 
 import model.CurrencySet;
 import model.Exchange;
+import model.Money;
 
 public class ExchangeDialog {
     
-    private final Exchange exchange;
     private final CurrencySet currencySet;
+    private Exchange exchange;
     
-    public ExchangeDialog(Exchange exchange, CurrencySet currencySet) {
-        this.exchange = exchange;
+    public ExchangeDialog(CurrencySet currencySet) {
         this.currencySet = currencySet;
     }
     
     public void execute(){
-        
+        this.exchange = new Exchange(new Money(100, currencySet.get(null)), currencySet.get(null));
     }
 
     public Exchange getExchange() {

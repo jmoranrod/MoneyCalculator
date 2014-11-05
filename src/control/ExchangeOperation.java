@@ -24,17 +24,17 @@ public class ExchangeOperation {
     }
 
     private Exchange readExchange() {
-        ExchangeDialog dialog = new ExchangeDialog(, currencySet);
+        ExchangeDialog dialog = new ExchangeDialog(currencySet);//duda
         dialog.execute();
         return dialog.getExchange();
     }
 
     private Money calculate(Money amount, ExchangeRate exchangeRate) {
-        return new Money(amount.getAmount(), exchangeRate.getOut());
+        return new Money(amount.getAmount()*exchangeRate.getRate(), exchangeRate.getOut());
     }
 
     private void show(Money money) {
-        new MoneyDisplay(money);
+        new MoneyDisplay(money);//duda
     }
 
     private ExchangeRate readExchangeRate() {

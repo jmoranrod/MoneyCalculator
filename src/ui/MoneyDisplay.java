@@ -13,5 +13,9 @@ public class MoneyDisplay {
     public Money getMoney() {
         return money;
     }
+    
+    public void execute() {
+        System.out.println();
+    }
 
 }
