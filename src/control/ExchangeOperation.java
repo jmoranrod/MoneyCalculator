@@ -1,6 +1,5 @@
 package control;
 
-import Persistence.CurrencySetLoader;
 import model.CurrencySet;
 import model.Exchange;
 import model.ExchangeRate;
@@ -25,7 +24,7 @@ public class ExchangeOperation {
     }
 
     private Exchange readExchange() {
-        //ExchangeDialog dialog = new ExchangeDialog(, currencySet);
+        ExchangeDialog dialog = new ExchangeDialog(, currencySet);
         dialog.execute();
         return dialog.getExchange();
     }
