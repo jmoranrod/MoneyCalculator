@@ -7,5 +7,5 @@ import model.CurrencySet;
 public class Application {
     
     CurrencySet currencySet = new CurrencySetLoader().load();
-    new ExchangeOperation().execute();
+    //ExchangeOperation(currencySet).execute();
 }

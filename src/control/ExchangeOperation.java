@@ -11,7 +11,7 @@ import ui.MoneyDisplay;
 
 public class ExchangeOperation {
     
-    private CurrencySet currencySet;
+    private final CurrencySet currencySet;
 
     public ExchangeOperation(CurrencySet currencySet) {
         this.currencySet = currencySet;
@@ -25,13 +25,13 @@ public class ExchangeOperation {
     }
 
     private Exchange readExchange() {
-        ExchangeDialog dialog = new ExchangeDialog();
+        //ExchangeDialog dialog = new ExchangeDialog(, currencySet);
         dialog.execute();
         return dialog.getExchange();
     }
 
     private Money calculate(Money amount, ExchangeRate exchangeRate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Money(amount.getAmount(), exchangeRate.getOut());
     }
 
     private void show(Money money) {

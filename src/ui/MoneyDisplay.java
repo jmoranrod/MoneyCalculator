@@ -4,10 +4,14 @@ import model.Money;
 
 public class MoneyDisplay {
     
-    private Money money;
+    private final Money money;
 
     public MoneyDisplay(Money money) {
         this.money = money;
     }
-    
+
+    public Money getMoney() {
+        return money;
+    }
+
 }

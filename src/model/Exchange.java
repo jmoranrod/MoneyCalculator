@@ -17,5 +17,4 @@ public class Exchange {
         return currency;
     }
     
-    
 }
