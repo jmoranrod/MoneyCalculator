@@ -11,10 +11,13 @@ public class ExchangeDialog {
     
     public ExchangeDialog(CurrencySet currencySet) {
         this.currencySet = currencySet;
+        //this.exchange = new Exchange(null, null);
     }
     
     public void execute(){
-        this.exchange = new Exchange(new Money(100, currencySet.get("EUR")), currencySet.get("USD"));
+        this.exchange = new Exchange(new Money(exchange.getMoney().getAmount(), 
+                currencySet.get("EUR")), 
+                currencySet.get(exchange.getCurrency().getCode()));
     }
 
     public Exchange getExchange() {
