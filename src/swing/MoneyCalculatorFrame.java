@@ -26,7 +26,7 @@ public class MoneyCalculatorFrame extends JFrame {
         this.currencySet = currencySet;
         setTitle("MoneyCalculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(new Dimension(400, 400));
+        setSize(new Dimension(300, 300));
         setResizable(false);
         setLocation(300, 300);
         createComponents();
