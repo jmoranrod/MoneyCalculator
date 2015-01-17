@@ -1,14 +1,24 @@
 package application;
 
 import control.ExchangeOperation;
-import persistence.CurrencySetLoader;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import mock.CurrencySetLoader;
 import model.CurrencySet;
+import swing.MoneyCalculatorFrame;
 
 public class Application {
     
     public static void main(String[] args) {
-        CurrencySet currencySet = new CurrencySetLoader().load();
-        new ExchangeOperation(currencySet).execute();
+        final CurrencySet currencySet = new CurrencySetLoader().load();
+        final MoneyCalculatorFrame frame = new MoneyCalculatorFrame(currencySet);
+        frame.register("Calculate", new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ExchangeOperation(frame.getMoneyDisplayLabel(), frame.getExchangeDialog()).execute();
+            }
+        });
     }
     
 }

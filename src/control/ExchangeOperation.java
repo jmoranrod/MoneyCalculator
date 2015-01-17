@@ -1,40 +1,40 @@
 package control;
 
-import model.CurrencySet;
+import mock.ExchangeRateLoader;
 import model.Exchange;
 import model.ExchangeRate;
 import model.Money;
-import persistence.ExchangeRateLoader;
+import process.Exchanger;
+import swing.MoneyDisplayLabel;
 import ui.ExchangeDialog;
-import ui.MoneyDisplay;
 
 public class ExchangeOperation {
     
-    private final CurrencySet currencySet;
+    private final MoneyDisplayLabel moneyDisplayLabel;
+    private final ExchangeDialog exchangeDialog;
 
-    public ExchangeOperation(CurrencySet currencySet) {
-        this.currencySet = currencySet;
+    public ExchangeOperation(MoneyDisplayLabel moneyDisplayLabel, ExchangeDialog exchangeDialog) {
+        this.moneyDisplayLabel = moneyDisplayLabel;
+        this.exchangeDialog = exchangeDialog;
     }
     
     public void execute(){
         Exchange exchange = readExchange();
         ExchangeRate exchangeRate = readExchangeRate();
-        Money money = calculate(exchange.getAmount(), exchangeRate);
+        Money money = calculate(exchange.getMoney(), exchangeRate);
         show(money);
     }
 
     private Exchange readExchange() {
-        ExchangeDialog dialog = new ExchangeDialog(currencySet);//duda
-        dialog.execute();
-        return dialog.getExchange();
+        return exchangeDialog.getExchange();
     }
 
     private Money calculate(Money amount, ExchangeRate exchangeRate) {
-        return new Money(amount.getAmount()*exchangeRate.getRate(), exchangeRate.getOut());
+        return new Exchanger(exchangeRate, amount).exchange();
     }
 
     private void show(Money money) {
-        new MoneyDisplay(money).execute();//duda
+        new MoneyDisplayLabel().show(money);
     }
 
     private ExchangeRate readExchangeRate() {

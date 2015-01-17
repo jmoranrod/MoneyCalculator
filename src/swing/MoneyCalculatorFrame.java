@@ -11,16 +11,19 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import ui.CurrencyDialog;
-import ui.MoneyDialog;
+import model.CurrencySet;
+import ui.ExchangeDialog;
 
 public class MoneyCalculatorFrame extends JFrame {
-    private ActionListener actionListener;
+    
+    private ExchangeDialog exchangeDialog;
     private MoneyDisplayLabel moneyDisplayLabel;
     private final Map<String,ActionListener> listeners;
+    private final CurrencySet currencySet;
 
-    public MoneyCalculatorFrame() {
+    public MoneyCalculatorFrame(CurrencySet currencySet) {
         this.listeners = new HashMap<>();
+        this.currencySet = currencySet;
         setTitle("MoneyCalculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setMinimumSize(new Dimension(300, 300));
@@ -31,22 +34,35 @@ public class MoneyCalculatorFrame extends JFrame {
         MoneyCalculatorFrame.this.add(createMoneyDisplay(),NORMAL);
     }
     
+    public ExchangeDialog getExchangeDialog() {
+        return exchangeDialog;
+    }
+
+    public MoneyDisplayLabel getMoneyDisplayLabel() {
+        return moneyDisplayLabel;
+    }
+    
     public void register(String command, ActionListener actionListener){
         this.listeners.put(command, actionListener);
     }
 
-    private void createComponents() {
-        add(createExchangeDialog());
-        //add(createMoneyDisplay());
+    private void createComponents(){
         add(createToolbar(), BorderLayout.SOUTH);
+        add(createExchangeDialog());
     }
 
     private JPanel createExchangeDialog() {
+        ExchangeDialogPanel panel = new ExchangeDialogPanel(currencySet);
+        this.exchangeDialog = panel;
+        return panel;
+    }
+    
+    /*private JPanel createExchangeDialog() {
         JPanel panel = new JPanel(new FlowLayout());
         panel.add(new MoneyDialog());
         panel.add(new CurrencyDialog());
         return panel;
-    }
+    }*/
 
     private JPanel createToolbar() {
         JPanel toolBar = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -61,6 +77,7 @@ public class MoneyCalculatorFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("AA");
                 listeners.get("Calculate").actionPerformed(e);
             }
         });
@@ -77,10 +94,6 @@ public class MoneyCalculatorFrame extends JFrame {
             }
         });
         return button;
-    }
-
-    public void register(ActionListener actionListener) {
-        this.actionListener = actionListener;
     }
 
     private JLabel createMoneyDisplay() {
