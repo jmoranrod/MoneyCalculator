@@ -1,11 +1,9 @@
 package ui;
-
-import model.CurrencySet;
+//adaptar el exchangerdialog y el exchage.
 import model.Exchange;
-import model.Money;
 
-public class ExchangeDialog {
-    
+public interface ExchangeDialog {
+    /*
     private final CurrencySet currencySet;
     private Exchange exchange;
     
@@ -27,7 +25,7 @@ public class ExchangeDialog {
     public CurrencySet getCurrencySet() {
         return currencySet;
     }
-    
-    
+    */
+    public Exchange getExchange();
     
 }

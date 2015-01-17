@@ -2,9 +2,9 @@ package ui;
 
 import model.Money;
 
-public class MoneyDisplay {
+public interface MoneyDisplay {
     
-    private final Money money;
+    /*private final Money money;
 
     public MoneyDisplay(Money money) {
         this.money = money;
@@ -16,6 +16,6 @@ public class MoneyDisplay {
     
     public void execute() {
         System.out.println(money +" "+money.getCurrency().getSymbol());
-    }
-
+    }*/
+    public void show(Money money);
 }
