@@ -8,7 +8,7 @@ public class MoneyDisplayLabel extends JLabel implements MoneyDisplay {
 
     @Override
     public void show(Money money) {
-        super.setText("Result: "+ writeResult(money));
+        super.setText("Total: "+ writeResult(money));
     }
 
     private String writeResult(Money money) {

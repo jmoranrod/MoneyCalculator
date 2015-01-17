@@ -26,12 +26,12 @@ public class MoneyCalculatorFrame extends JFrame {
         this.currencySet = currencySet;
         setTitle("MoneyCalculator");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setMinimumSize(new Dimension(300, 300));
+        setSize(new Dimension(400, 400));
         setResizable(false);
         setLocation(300, 300);
         createComponents();
         setVisible(true);
-        MoneyCalculatorFrame.this.add(createMoneyDisplay(),NORMAL);
+        MoneyCalculatorFrame.this.add(createMoneyDisplay(), NORMAL);
     }
     
     public ExchangeDialog getExchangeDialog() {
@@ -47,8 +47,8 @@ public class MoneyCalculatorFrame extends JFrame {
     }
 
     private void createComponents(){
-        add(createToolbar(), BorderLayout.SOUTH);
         add(createExchangeDialog());
+        add(createToolbar(), BorderLayout.SOUTH);
     }
 
     private JPanel createExchangeDialog() {
@@ -73,14 +73,7 @@ public class MoneyCalculatorFrame extends JFrame {
 
     private JButton createCalculateButton() {
         JButton button = new JButton("Calculate");
-        button.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("AA");
-                listeners.get("Calculate").actionPerformed(e);
-            }
-        });
+        button.addActionListener(createActionListener("Calculate"));
         return button;
     }
 
@@ -100,6 +93,16 @@ public class MoneyCalculatorFrame extends JFrame {
         MoneyDisplayLabel label = new MoneyDisplayLabel();
         this.moneyDisplayLabel = label;
         return label;
+    }
+
+    private ActionListener createActionListener(final String string) {
+        return new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listeners.get(string).actionPerformed(e);
+            }
+        };
     }
 
 }
