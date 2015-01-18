@@ -1,5 +1,6 @@
 package control;
 
+import java.sql.SQLException;
 import mock.ExchangeRateLoader;
 import model.Currency;
 import model.Exchange;
@@ -19,7 +20,7 @@ public class ExchangeOperation {
         this.exchangeDialog = exchangeDialog;
     }
     
-    public void execute(){
+    public void execute() throws SQLException{
         Exchange exchange = readExchange();
         ExchangeRate exchangeRate = readExchangeRate(getInCurrency(exchange), getOutCurrency(exchange));
         Money money = calculate(exchange.getMoney(), exchangeRate);
@@ -47,7 +48,7 @@ public class ExchangeOperation {
         moneyDisplayLabel.show(money);
     }
 
-    private ExchangeRate readExchangeRate(Currency in, Currency out) {
+    private ExchangeRate readExchangeRate(Currency in, Currency out) throws SQLException {
         return new ExchangeRateLoader().load(in,out);
     }
     
