@@ -7,16 +7,16 @@ import model.Exchange;
 import model.ExchangeRate;
 import model.Money;
 import process.Exchanger;
-import swing.MoneyDisplayLabel;
 import ui.ExchangeDialog;
+import ui.MoneyDisplay;
 
 public class ExchangeOperation {
     
-    private final MoneyDisplayLabel moneyDisplayLabel;
+    private final MoneyDisplay moneyDisplay;
     private final ExchangeDialog exchangeDialog;
 
-    public ExchangeOperation(MoneyDisplayLabel moneyDisplayLabel, ExchangeDialog exchangeDialog) {
-        this.moneyDisplayLabel = moneyDisplayLabel;
+    public ExchangeOperation(MoneyDisplay moneyDisplay, ExchangeDialog exchangeDialog) {
+        this.moneyDisplay = moneyDisplay;
         this.exchangeDialog = exchangeDialog;
     }
     
@@ -45,7 +45,7 @@ public class ExchangeOperation {
     }
 
     private void show(Money money) {
-        moneyDisplayLabel.show(money);
+        moneyDisplay.show(money);
     }
 
     private ExchangeRate readExchangeRate(Currency in, Currency out) throws SQLException {

@@ -13,11 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import model.CurrencySet;
 import ui.ExchangeDialog;
+import ui.MoneyDisplay;
 
 public class MoneyCalculatorFrame extends JFrame {
     
     private ExchangeDialog exchangeDialog;
-    private MoneyDisplayLabel moneyDisplayLabel;
+    private MoneyDisplay moneyDisplay;
     private final Map<String,ActionListener> listeners;
     private final CurrencySet currencySet;
 
@@ -38,8 +39,8 @@ public class MoneyCalculatorFrame extends JFrame {
         return exchangeDialog;
     }
 
-    public MoneyDisplayLabel getMoneyDisplayLabel() {
-        return moneyDisplayLabel;
+    public MoneyDisplay getMoneyDisplayLabel() {
+        return moneyDisplay;
     }
     
     public void register(String command, ActionListener actionListener){
@@ -56,13 +57,6 @@ public class MoneyCalculatorFrame extends JFrame {
         this.exchangeDialog = panel;
         return panel;
     }
-    
-    /*private JPanel createExchangeDialog() {
-        JPanel panel = new JPanel(new FlowLayout());
-        panel.add(new MoneyDialog());
-        panel.add(new CurrencyDialog());
-        return panel;
-    }*/
 
     private JPanel createToolbar() {
         JPanel toolBar = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -91,7 +85,7 @@ public class MoneyCalculatorFrame extends JFrame {
 
     private JLabel createMoneyDisplay() {
         MoneyDisplayLabel label = new MoneyDisplayLabel();
-        this.moneyDisplayLabel = label;
+        this.moneyDisplay = label;
         return label;
     }
 
