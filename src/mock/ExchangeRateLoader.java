@@ -11,6 +11,7 @@ public class ExchangeRateLoader implements persistence.ExchangeRateLoader {
     }
 
     private double computeRates(Currency in, Currency out) {
+        if (in.equals(out)) return 1.0;
         return Math.random();
     }
     
